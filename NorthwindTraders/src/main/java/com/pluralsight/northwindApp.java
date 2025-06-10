@@ -5,10 +5,16 @@ import java.sql.*;
 public class northwindApp {
 
     public static void main(String[] args) {
-        String username = "root";
-        String password = "Yearup2025!!";
+        String username = args[0];
+        String password = args[1];
+        if (args.length != 2) {
+            System.out.println(
+                    "Application needs two arguments to run: " +
+                            "java com.pluralsight.UsingDriverManager <username> <password>");
+            System.exit(1);
+        }
 
-        try {
+            try {
             Connection connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/northwind", username, password);
 
 
